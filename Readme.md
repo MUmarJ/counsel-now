@@ -1,6 +1,8 @@
 # Shaikh Counselor Website
 
-Professional Islamic counseling website with integrated booking system.
+Professional Arabic counseling website with integrated booking system.
+
+<video src="counsel-now-demo.mp4" controls autoplay loop muted></video>
 
 ## 🚀 Quick Start
 
@@ -36,7 +38,7 @@ shaikh-counselor/
 │   │   ├── logo.svg
 │   │   ├── shaikh-photo.jpg
 │   │   └── og-image.jpg
-│   └── patterns/            # Islamic geometric patterns
+│   └── patterns/            # Arabic geometric patterns
 ├── content.config.ts        # ⭐ EDIT THIS for all content
 ├── tailwind.config.ts       # Design system configuration
 ├── package.json

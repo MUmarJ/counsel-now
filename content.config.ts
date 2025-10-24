@@ -80,7 +80,7 @@ export const siteConfig = {
       { value: "98%", label: "Satisfaction Rate" },
     ],
     image: {
-      type: "placeholder", // "placeholder" | "photo" | "illustration"
+      type: "photo", // "placeholder" | "photo" | "illustration"
       path: "/images/shaikh-photo.jpg", // Path to image in /public folder
       alt: "Shaikh Mendez",
       caption: {
