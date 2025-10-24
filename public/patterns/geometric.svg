@@ -1,0 +1,17 @@
+<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="islamic-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <!-- 8-pointed star pattern -->
+      <path d="M30 15 L35 25 L45 30 L35 35 L30 45 L25 35 L15 30 L25 25 Z"
+            fill="#064e3b"
+            opacity="0.03"/>
+      <!-- Small decorative elements -->
+      <circle cx="30" cy="30" r="2" fill="#059669" opacity="0.02"/>
+      <circle cx="0" cy="0" r="1" fill="#059669" opacity="0.02"/>
+      <circle cx="60" cy="0" r="1" fill="#059669" opacity="0.02"/>
+      <circle cx="0" cy="60" r="1" fill="#059669" opacity="0.02"/>
+      <circle cx="60" cy="60" r="1" fill="#059669" opacity="0.02"/>
+    </pattern>
+  </defs>
+  <rect width="60" height="60" fill="url(#islamic-pattern)"/>
+</svg>
