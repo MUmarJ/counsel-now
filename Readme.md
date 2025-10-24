@@ -1,10 +1,10 @@
-# Shaikh Counselor Website
+# Counsel Now
 
-Professional Arabic counseling website with integrated booking system.
+Professional Arabic counseling website template with integrated booking system.
 
-<video src="counsel-now-demo.mp4" controls autoplay loop muted></video>
+![Demo](counsel-now-demo.gif)
 
-## 🚀 Quick Start
+##  Quick Start
 
 ```bash
 # Install dependencies
@@ -17,7 +17,7 @@ npm run dev
 # Visit http://localhost:3000
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 shaikh-counselor/
@@ -45,7 +45,7 @@ shaikh-counselor/
 └── README.md                # This file
 ```
 
-## 📝 Editing Content
+##  Editing Content
 
 **To update website content (phone, services, text, etc.):**
 
@@ -109,7 +109,7 @@ hero: {
 }
 ```
 
-## 🌐 Deployment
+##  Deployment
 
 ### Deploy to Vercel (Recommended)
 
@@ -135,7 +135,7 @@ Your site will be live at: `https://your-project.vercel.app`
 5. Wait 5-60 minutes for DNS propagation
 6. SSL certificate auto-configured ✅
 
-## 📅 Cal.com Setup
+##  Cal.com Setup
 
 ### Initial Setup
 
@@ -191,7 +191,7 @@ services: {
 2. Customize booking confirmation template
 3. Set up reminders (24h, 1h before)
 
-## 🧪 Testing
+##  Testing
 
 ### Local Testing
 ```bash
@@ -211,7 +211,7 @@ npm run dev
 - [ ] Privacy policy and terms pages exist
 - [ ] Google Meet links generate in confirmation emails
 
-## 📊 Analytics
+## Analytics
 
 ### Vercel Analytics (Free)
 Already included! View in Vercel dashboard.
@@ -224,11 +224,11 @@ Already included! View in Vercel dashboard.
 <Script src={`https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX`} />
 ```
 
-## 🔒 Environment Variables
+##  Environment Variables
 
 No sensitive environment variables needed! Cal.com is embedded via public links.
 
-## 💰 Monthly Costs
+##  Monthly Costs
 
 | Service | Cost | Notes |
 |---------|------|-------|
@@ -240,7 +240,7 @@ No sensitive environment variables needed! Cal.com is embedded via public links.
 
 **Total: ~$15-21/month** ($180-252/year)
 
-## 🆘 Troubleshooting
+## Troubleshooting
 
 ### Booking Modal Won't Open
 - Check that Cal.com username in `content.config.ts` matches your account
@@ -263,7 +263,7 @@ No sensitive environment variables needed! Cal.com is embedded via public links.
 - Check Tailwind classes are valid
 - Run `npm run build` to check for errors
 
-## 📚 Additional Resources
+##  Additional Resources
 
 - **Project Plan:** [`project_plan.md`](./project_plan.md) - Full development roadmap
 - **Content Guide:** [`CONTENT_GUIDE.md`](./CONTENT_GUIDE.md) - How to edit content
@@ -277,19 +277,19 @@ No sensitive environment variables needed! Cal.com is embedded via public links.
 - Cal.com: https://cal.com/docs
 - Vercel: https://vercel.com/docs
 
-## 🤝 Support
+##  Support
 
 **For content updates:** See [`CONTENT_GUIDE.md`](./CONTENT_GUIDE.md)
 **For technical issues:** Contact your developer
 **For Cal.com help:** https://cal.com/docs or support@cal.com
 **For Vercel help:** https://vercel.com/support
 
-## 📄 License
+## License
 
-Private project for Shaikh Counseling Services. All rights reserved.
+This project is released under the MIT License. See the `LICENSE` file for details.
 
 ---
 
-**Last Updated:** October 24, 2024
+**Last Updated:** October 24, 2025
 **Version:** 1.0.0
-**Status:** 🟢 Active Development
+**Status:**  Active Development
