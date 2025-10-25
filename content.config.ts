@@ -25,10 +25,13 @@ export const siteConfig = {
   branding: {
     // Logo can be text, image path, or both
     logo: {
-      type: "text", // "text" | "image" | "both"
-      text: "ش", // Arabic letter for Shaikh
-      imagePath: "/logo.svg", // Path to logo file in /public folder
+      type: "both", // "text" | "image" | "both"
+      text: "Shaikh Counseling", // Brand text
+      imagePath: "/images/brand-logo.svg", // Path to logo file in /public folder
+      textImagePath: "/images/brand-text.svg", // Path to brand text image
       alt: "Shaikh Counseling Logo",
+      logoColor: "#046e50", // Fill color for logo SVG
+      textColor: "#047857", // Fill color for text SVG (#07875B per request)
     },
     // Main brand colors (used throughout the site)
     colors: {
@@ -101,9 +104,9 @@ export const siteConfig = {
         id: "marriage-family",
         title: "Marriage & Family Counseling",
         description: "Strengthen your relationships with Islamic guidance and modern therapeutic approaches.",
-        icon: "heart", // Options: "heart" | "book" | "star" | "users" | "compass"
+        icon: "Heart", // Options: "Heart" | "BookOpen" | "Sparkles"
         duration: "60 min",
-        price: "$120",
+        price: "120",
         detailedDescription: "Navigate marital challenges, improve communication, and build lasting harmony in your family life. We'll work together using principles from the Quran and Sunnah combined with evidence-based counseling techniques.",
         calendarLink: "marriage-counseling", // Cal.com event type slug
       },
@@ -111,9 +114,9 @@ export const siteConfig = {
         id: "spiritual-development",
         title: "Spiritual Development",
         description: "Deepen your connection with Allah through personalized spiritual guidance.",
-        icon: "book",
+        icon: "BookOpen",
         duration: "45 min",
-        price: "$90",
+        price: "90",
         detailedDescription: "Overcome spiritual struggles, develop consistent worship habits, and find peace in your faith journey. Perfect for those seeking to strengthen their relationship with Allah and understand Islam more deeply.",
         calendarLink: "spiritual-development",
       },
@@ -121,9 +124,9 @@ export const siteConfig = {
         id: "life-transitions",
         title: "Life Transitions Support",
         description: "Navigate major life changes with wisdom from Islamic teachings.",
-        icon: "star",
+        icon: "Sparkles",
         duration: "60 min",
-        price: "$120",
+        price: "120",
         detailedDescription: "Career changes, relocation, loss, or new responsibilities - receive guidance rooted in faith and practical wisdom. We'll help you find clarity and direction during uncertain times.",
         calendarLink: "life-transitions",
       },

@@ -1,8 +1,14 @@
 'use client';
 
 import { useEffect } from 'react';
-import { X } from 'lucide-react';
 import { siteConfig } from '@/content.config';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -24,54 +30,20 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    // Handle escape key to close modal
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-
   const calLink = `${siteConfig.booking.calUsername}/${siteConfig.booking.defaultEventType}`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-        onClick={onClose}
-      />
-
-      {/* Modal */}
-      <div className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="max-w-4xl max-h-[90vh] flex flex-col p-0">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-emerald-100 bg-gradient-to-r from-emerald-50 to-white">
-          <div>
-            <h2 className="text-2xl font-bold text-emerald-900">
-              Book Your Session
-            </h2>
-            <p className="text-slate-600 mt-1">
-              Select a time that works best for you
-            </p>
-          </div>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-emerald-100 rounded-lg transition-colors"
-          >
-            <X className="w-6 h-6 text-slate-600" />
-          </button>
-        </div>
+        <DialogHeader className="p-6 border-b border-emerald-100 bg-gradient-to-r from-emerald-50 to-white">
+          <DialogTitle className="text-2xl font-bold text-emerald-900">
+            Book Your Session
+          </DialogTitle>
+          <DialogDescription className="text-slate-600 mt-1">
+            Select a time that works best for you
+          </DialogDescription>
+        </DialogHeader>
 
         {/* Cal.com Embed */}
         <div className="flex-1 overflow-auto p-4">
@@ -94,7 +66,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             </a>
           </p>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 }

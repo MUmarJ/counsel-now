@@ -13,7 +13,7 @@ test.describe('Services Section Tests', () => {
   });
 
   test('should display section title and subtitle', async ({ page }) => {
-    await expect(page.getByText(/Our Services/i)).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Counseling Services/i })).toBeVisible();
   });
 
   test('should display all service cards', async ({ page }) => {
@@ -22,22 +22,31 @@ test.describe('Services Section Tests', () => {
   });
 
   test('should show service pricing and duration', async ({ page }) => {
-    // Check for price
-    await expect(page.getByText(/\$\d+/)).toBeVisible();
+    // Check for price (use first() to avoid strict mode violation)
+    await expect(page.getByText(/\$\d+/).first()).toBeVisible();
 
-    // Check for duration
-    await expect(page.getByText(/\d+ min/)).toBeVisible();
+    // Check for duration (use first() to avoid strict mode violation)
+    await expect(page.getByText(/\d+ min/).first()).toBeVisible();
   });
 
   test('should expand service details when More Details is clicked', async ({ page }) => {
-    const moreDetailsButton = page.getByRole('button', { name: /More Details/i }).first();
+    // Find the Accordion trigger - Shadcn Accordion component
+    const accordionTrigger = page.locator('[data-slot="accordion-trigger"]').first();
 
-    if (await moreDetailsButton.isVisible()) {
-      await moreDetailsButton.click();
-      await page.waitForTimeout(500); // Wait for animation
+    if (await accordionTrigger.isVisible()) {
+      // Verify the trigger contains "More Details"
+      await expect(accordionTrigger).toContainText(/More Details/i);
 
-      // Check if details are expanded (more text visible)
-      await expect(page.locator('#services')).toContainText(/./);
+      await accordionTrigger.click();
+      await page.waitForTimeout(500); // Wait for accordion animation
+
+      // Check if accordion content is visible - Shadcn Accordion
+      const accordionContent = page.locator('[data-slot="accordion-content"]').first();
+      await expect(accordionContent).toBeVisible();
+
+      // Check that content has text
+      const contentText = await accordionContent.textContent();
+      expect(contentText?.length).toBeGreaterThan(0);
     }
   });
 

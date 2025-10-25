@@ -3,6 +3,12 @@
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 import { siteConfig } from '@/content.config';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from '@/components/ui/card';
 
 export default function Testimonials() {
   const renderStars = (rating: number) => {
@@ -30,10 +36,10 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-emerald-900 mb-4">
-            {siteConfig.testimonials.sectionTitle}
+            {siteConfig.testimonials.heading}
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            {siteConfig.testimonials.sectionSubtitle}
+            {siteConfig.testimonials.subheading}
           </p>
         </motion.div>
 
@@ -46,49 +52,40 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group"
+              className="group h-full"
             >
-              <div className="h-full bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 rounded-2xl p-8 hover:shadow-xl hover:border-emerald-300 transition-all duration-300">
-                {/* Quote Icon */}
-                <div className="mb-4">
-                  <Quote className="w-10 h-10 text-emerald-600/20" />
-                </div>
+              <Card className="h-full bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 hover:shadow-xl hover:border-emerald-300 transition-all duration-300">
+                <CardHeader>
+                  {/* Quote Icon */}
+                  <Quote className="w-10 h-10 text-emerald-600/20 mb-2" />
 
-                {/* Stars */}
-                <div className="flex space-x-1 mb-4">
-                  {renderStars(testimonial.rating)}
-                </div>
+                  {/* Stars */}
+                  <div className="flex space-x-1">
+                    {renderStars(testimonial.rating)}
+                  </div>
+                </CardHeader>
 
-                {/* Testimonial Text */}
-                <p className="text-slate-700 leading-relaxed mb-6 italic">
-                  "{testimonial.text}"
-                </p>
+                <CardContent>
+                  {/* Testimonial Text */}
+                  <p className="text-slate-700 leading-relaxed italic">
+                    "{testimonial.text}"
+                  </p>
+                </CardContent>
 
-                {/* Author */}
-                <div className="flex items-center space-x-4 pt-4 border-t border-emerald-100">
-                  {testimonial.photo ? (
-                    <img
-                      src={testimonial.photo}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-emerald-200"
-                    />
-                  ) : (
+                <CardFooter className="border-t border-emerald-100">
+                  {/* Author */}
+                  <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-full flex items-center justify-center text-white font-bold text-lg">
                       {testimonial.name.charAt(0)}
                     </div>
-                  )}
-                  <div>
-                    <p className="font-semibold text-emerald-900">
-                      {testimonial.name}
-                    </p>
-                    {testimonial.location && (
-                      <p className="text-sm text-slate-500">
-                        {testimonial.location}
+                    <div>
+                      <p className="font-semibold text-emerald-900">
+                        {testimonial.name}
                       </p>
-                    )}
+                    </div>
                   </div>
-                </div>
-              </div>
+                </CardFooter>
+              </Card>
             </motion.div>
           ))}
         </div>
@@ -101,15 +98,17 @@ export default function Testimonials() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16 text-center"
         >
-          <div className="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-6 rounded-2xl shadow-xl">
-            <div className="flex items-center justify-center space-x-2 mb-2">
-              {renderStars(5)}
-            </div>
-            <p className="text-3xl font-bold mb-1">5.0 Average Rating</p>
-            <p className="text-emerald-100">
-              Based on {siteConfig.testimonials.items.length}+ client reviews
-            </p>
-          </div>
+          <Card className="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white border-0 shadow-xl">
+            <CardContent className="px-8 py-6">
+              <div className="flex items-center justify-center space-x-2 mb-2">
+                {renderStars(5)}
+              </div>
+              <p className="text-3xl font-bold mb-1">5.0 Average Rating</p>
+              <p className="text-emerald-100">
+                Based on {siteConfig.testimonials.items.length}+ client reviews
+              </p>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     </section>

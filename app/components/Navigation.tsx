@@ -1,9 +1,18 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, Phone } from 'lucide-react';
 import { siteConfig } from '@/content.config';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from '@/components/ui/sheet';
+import BrandLogo from '@/app/components/BrandLogo';
+import BrandText from '@/app/components/BrandText';
 
 export default function Navigation({ onBookingClick }: { onBookingClick: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,12 +73,23 @@ export default function Navigation({ onBookingClick }: { onBookingClick: () => v
                   {siteConfig.branding.logo.text}
                 </span>
               </div>
-            ) : (
-              <img
-                src={siteConfig.branding.logo.imagePath}
-                alt={siteConfig.branding.logo.alt}
-                className="h-12 w-auto"
+            ) : siteConfig.branding.logo.type === 'image' ? (
+              <BrandLogo
+                className="h-12 w-auto transition-transform group-hover:scale-105"
+                fill={siteConfig.branding.logo.logoColor}
               />
+            ) : (
+              // both: logo + text image (SVG with custom colors)
+              <div className="flex items-center space-x-3">
+                <BrandLogo
+                  className="h-12 w-auto transition-transform group-hover:scale-105"
+                  fill={siteConfig.branding.logo.logoColor}
+                />
+                <BrandText
+                  className="h-8 w-auto transition-transform group-hover:scale-105"
+                  fill={siteConfig.branding.logo.textColor}
+                />
+              </div>
             )}
           </button>
 
@@ -91,34 +111,42 @@ export default function Navigation({ onBookingClick }: { onBookingClick: () => v
               <Phone className="w-4 h-4" />
               <span>{siteConfig.metadata.phone}</span>
             </a>
-            <button
+            <Button
               onClick={onBookingClick}
               className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-6 py-2.5 rounded-xl hover:shadow-lg hover:shadow-emerald-600/30 transition-all duration-300 font-medium"
             >
               Book Session
-            </button>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-slate-700 hover:text-emerald-600 transition-colors"
+            className="md:hidden text-slate-700 hover:text-emerald-600"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+            <Menu className="w-6 h-6" />
+          </Button>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-3">
+      {/* Mobile Menu - Shadcn Sheet */}
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+          <SheetHeader>
+            <SheetTitle className="text-emerald-900">Menu</SheetTitle>
+          </SheetHeader>
+          <div className="flex flex-col space-y-4 mt-8">
             {navLinks.map((link) => (
-              <button
+              <Button
                 key={link.id}
+                variant="ghost"
                 onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left px-4 py-2 text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
+                className="justify-start text-slate-700 hover:text-emerald-600 hover:bg-emerald-50"
               >
                 {link.label}
-              </button>
+              </Button>
             ))}
             <a
               href={`tel:${siteConfig.metadata.phone.replace(/\D/g, '')}`}
@@ -127,15 +155,18 @@ export default function Navigation({ onBookingClick }: { onBookingClick: () => v
               <Phone className="w-4 h-4" />
               <span>{siteConfig.metadata.phone}</span>
             </a>
-            <button
-              onClick={onBookingClick}
-              className="w-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-6 py-3 rounded-xl hover:shadow-lg hover:shadow-emerald-600/30 transition-all duration-300 font-medium"
+            <Button
+              onClick={() => {
+                onBookingClick();
+                setIsOpen(false);
+              }}
+              className="w-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white hover:shadow-lg hover:shadow-emerald-600/30 transition-all duration-300"
             >
               Book Session
-            </button>
+            </Button>
           </div>
-        )}
-      </div>
+        </SheetContent>
+      </Sheet>
     </nav>
   );
 }

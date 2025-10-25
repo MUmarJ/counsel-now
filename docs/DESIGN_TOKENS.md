@@ -620,4 +620,4 @@ export default {
 
 ---
 
-This design system ensures consistency, accessibility, and cultural appropriateness throughout the Shaikh Counselor website.
+This design system ensures consistency, accessibility, and cultural appropriateness throughout the Counsel Now template website.

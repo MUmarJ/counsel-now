@@ -2,7 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { CheckCircle, Quote } from 'lucide-react';
+import Image from 'next/image';
 import { siteConfig } from '@/content.config';
+import { Card, CardContent } from '@/components/ui/card';
 
 export default function About() {
   return (
@@ -20,9 +22,11 @@ export default function About() {
             {siteConfig.about.photo.type === 'photo' ? (
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 rounded-3xl transform -rotate-3" />
-                <img
+                <Image
                   src={siteConfig.about.photo.path}
                   alt={siteConfig.about.photo.alt}
+                  width={600}
+                  height={600}
                   className="relative rounded-3xl shadow-2xl w-full h-auto object-cover"
                 />
               </div>
@@ -50,7 +54,7 @@ export default function About() {
           >
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-emerald-900 mb-4">
-                {siteConfig.about.sectionTitle}
+                {siteConfig.about.heading}
               </h2>
               <p className="text-emerald-700 text-lg font-medium italic">
                 {siteConfig.about.greeting}
@@ -67,19 +71,24 @@ export default function About() {
               <h3 className="text-xl font-bold text-emerald-900 mb-4">
                 Credentials & Experience
               </h3>
-              {siteConfig.about.credentials.map((credential, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="flex items-start space-x-3"
-                >
-                  <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-700">{credential.text}</span>
-                </motion.div>
-              ))}
+              <div className="space-y-3">
+                {siteConfig.about.credentials.map((credential, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                  >
+                    <Card className="border-emerald-100 hover:border-emerald-300 transition-all duration-300">
+                      <CardContent className="flex items-start space-x-3 p-4">
+                        <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" />
+                        <span className="text-slate-700">{credential.text}</span>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
             </div>
 
             {/* Quote */}
@@ -89,17 +98,20 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="relative bg-gradient-to-br from-emerald-600 to-teal-600 text-white p-8 rounded-2xl shadow-xl mt-8"
               >
-                <Quote className="absolute top-4 left-4 w-12 h-12 text-white/20" />
-                <div className="relative">
-                  <p className="text-lg md:text-xl font-medium leading-relaxed mb-4 italic">
-                    "{siteConfig.about.quote.text}"
-                  </p>
-                  <p className="text-emerald-100 text-right">
-                    — {siteConfig.about.quote.source}
-                  </p>
-                </div>
+                <Card className="relative bg-gradient-to-br from-emerald-600 to-teal-600 text-white border-0 shadow-xl mt-8">
+                  <CardContent className="p-8">
+                    <Quote className="absolute top-4 left-4 w-12 h-12 text-white/20" />
+                    <div className="relative">
+                      <p className="text-lg md:text-xl font-medium leading-relaxed mb-4 italic">
+                        "{siteConfig.about.quote.text}"
+                      </p>
+                      <p className="text-emerald-100 text-right">
+                        — {siteConfig.about.quote.reference}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
               </motion.div>
             )}
           </motion.div>

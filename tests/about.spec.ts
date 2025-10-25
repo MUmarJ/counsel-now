@@ -12,7 +12,7 @@ test.describe('About Section Tests', () => {
   });
 
   test('should display section title', async ({ page }) => {
-    await expect(page.getByText(/About/i)).toBeVisible();
+    await expect(page.getByRole('heading', { name: /About Shaikh/i })).toBeVisible();
   });
 
   test('should display greeting', async ({ page }) => {

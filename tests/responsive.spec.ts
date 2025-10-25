@@ -33,8 +33,8 @@ test.describe('Responsive Design Tests', () => {
     // All sections should be visible
     await expect(page.locator('#hero')).toBeVisible();
 
-    // Mobile menu button should be visible
-    const menuButton = page.locator('nav button').first();
+    // Mobile menu button should be visible (Shadcn Button)
+    const menuButton = page.locator('nav button[class*="md:hidden"]').first();
     await expect(menuButton).toBeVisible();
   });
 
@@ -42,12 +42,16 @@ test.describe('Responsive Design Tests', () => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto('/');
 
-    // Click hamburger menu
-    const menuButton = page.locator('nav button').first();
+    // Click hamburger menu (Shadcn Button)
+    const menuButton = page.locator('nav button[class*="md:hidden"]').first();
     await menuButton.click();
     await page.waitForTimeout(300);
 
-    // Navigation links should be visible
+    // Sheet should be visible
+    const sheetContent = page.locator('[data-slot="sheet-content"]');
+    await expect(sheetContent).toBeVisible();
+
+    // Navigation links should be visible in Sheet
     await expect(page.getByRole('button', { name: 'Services' })).toBeVisible();
   });
 

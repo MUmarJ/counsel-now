@@ -9,7 +9,9 @@ test.describe('Navigation Tests', () => {
     const navLinks = ['Home', 'Services', 'About', 'Testimonials', 'Contact'];
 
     for (const link of navLinks) {
-      await expect(page.getByRole('button', { name: link })).toBeVisible();
+      // Use nav locator to scope to navigation only, avoiding conflicts with footer or other sections
+      const navButton = page.locator('nav').getByRole('button', { name: link });
+      await expect(navButton.first()).toBeVisible();
     }
   });
 
@@ -36,14 +38,19 @@ test.describe('Navigation Tests', () => {
     // Set mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
 
-    // Mobile menu button should be visible
-    const menuButton = page.locator('button').filter({ has: page.locator('svg') }).first();
+    // Mobile menu button should be visible (Shadcn Button with Menu icon)
+    const menuButton = page.locator('nav button[class*="md:hidden"]').first();
     await expect(menuButton).toBeVisible();
 
     // Click to open menu
     await menuButton.click();
+    await page.waitForTimeout(300); // Wait for Sheet animation
 
-    // Mobile menu items should be visible
+    // Sheet should be open - check for Sheet content with Menu title
+    const sheetContent = page.locator('[data-slot="sheet-content"]');
+    await expect(sheetContent).toBeVisible();
+
+    // Mobile menu items should be visible in Sheet
     await expect(page.getByRole('button', { name: 'Services' })).toBeVisible();
   });
 

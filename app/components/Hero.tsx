@@ -2,7 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { Star, Users, Calendar } from 'lucide-react';
+import Image from 'next/image';
 import { siteConfig } from '@/content.config';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 export default function Hero({ onBookingClick }: { onBookingClick: () => void }) {
   const scrollToServices = () => {
@@ -63,18 +66,21 @@ export default function Hero({ onBookingClick }: { onBookingClick: () => void })
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <button
+            <Button
               onClick={onBookingClick}
-              className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-8 py-4 rounded-xl hover:shadow-xl hover:shadow-emerald-600/30 transition-all duration-300 font-semibold text-lg transform hover:-translate-y-1"
+              size="lg"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-8 py-6 rounded-xl hover:shadow-xl hover:shadow-emerald-600/30 transition-all duration-300 font-semibold text-lg transform hover:-translate-y-1"
             >
               {siteConfig.hero.primaryCTA.text}
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={scrollToServices}
-              className="border-2 border-emerald-600 text-emerald-700 px-8 py-4 rounded-xl hover:bg-emerald-50 transition-all duration-300 font-semibold text-lg"
+              variant="outline"
+              size="lg"
+              className="border-2 border-emerald-600 text-emerald-700 px-8 py-6 rounded-xl hover:bg-emerald-50 transition-all duration-300 font-semibold text-lg"
             >
               {siteConfig.hero.secondaryCTA.text}
-            </button>
+            </Button>
           </motion.div>
 
           {/* Stats */}
@@ -84,19 +90,23 @@ export default function Hero({ onBookingClick }: { onBookingClick: () => void })
             transition={{ duration: 0.6, delay: 0.4 }}
             className="grid grid-cols-3 gap-6 pt-8"
           >
-            {siteConfig.hero.stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="flex justify-center mb-2">
-                  {stat.icon === 'Star' && <Star className="w-6 h-6 text-amber-500" />}
-                  {stat.icon === 'Users' && <Users className="w-6 h-6 text-emerald-600" />}
-                  {stat.icon === 'Calendar' && <Calendar className="w-6 h-6 text-emerald-600" />}
+            {siteConfig.hero.stats.map((stat, index) => {
+              const icons = [Star, Users, Calendar];
+              const Icon = icons[index] || Star;
+              const colors = ['text-amber-500', 'text-emerald-600', 'text-emerald-600'];
+
+              return (
+                <div key={index} className="text-center">
+                  <div className="flex justify-center mb-2">
+                    <Icon className={`w-6 h-6 ${colors[index]}`} />
+                  </div>
+                  <div className="text-2xl md:text-3xl font-bold text-emerald-900">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-slate-600">{stat.label}</div>
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-emerald-900">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-slate-600">{stat.label}</div>
-              </div>
-            ))}
+              );
+            })}
           </motion.div>
         </motion.div>
 
@@ -110,9 +120,11 @@ export default function Hero({ onBookingClick }: { onBookingClick: () => void })
           {siteConfig.hero.image.type === 'photo' ? (
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-teal-600/20 rounded-3xl transform rotate-3" />
-              <img
+              <Image
                 src={siteConfig.hero.image.path}
                 alt={siteConfig.hero.image.alt}
+                width={600}
+                height={750}
                 className="relative rounded-3xl shadow-2xl w-full h-auto object-cover"
               />
             </div>
@@ -124,7 +136,9 @@ export default function Hero({ onBookingClick }: { onBookingClick: () => void })
                   <Users className="w-24 h-24" />
                 </div>
                 <h3 className="text-3xl font-bold mb-2">{siteConfig.metadata.siteName}</h3>
-                <p className="text-emerald-100 text-lg">Professional Counseling</p>
+                <Badge variant="secondary" className="text-emerald-100 bg-white/20 text-lg">
+                  Professional Counseling
+                </Badge>
               </div>
             </div>
           )}
