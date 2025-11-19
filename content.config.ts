@@ -165,6 +165,7 @@ export const siteConfig = {
       commentary: "This ayah reminds us that with tawakkul and proper guidance, Allah provides solutions we never imagined. Let's work together on your path to wellness, in sha Allah.",
     },
     photo: {
+      type: "photo", // "photo" | "placeholder"
       path: "/images/shaikh-about.jpg",
       alt: "Shaikh Mendez",
     },
@@ -276,10 +277,10 @@ export const siteConfig = {
   // ========================================
   booking: {
     // Your Cal.com username
-    calUsername: "shaikh-counselor",
+    calUsername: "mumarj",
 
     // Default event type (used for main CTA buttons)
-    defaultEventType: "consultation",
+    defaultEventType: "marriage-counseling",
 
     // Cal.com embed styling
     embedConfig: {

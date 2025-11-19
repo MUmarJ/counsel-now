@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Cal, { getCalApi } from '@calcom/embed-react';
 import { siteConfig } from '@/content.config';
 import {
   Dialog,
@@ -17,45 +18,48 @@ interface BookingModalProps {
 
 export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   useEffect(() => {
-    // Load Cal.com embed script
-    if (isOpen) {
-      const script = document.createElement('script');
-      script.src = 'https://app.cal.com/embed/embed.js';
-      script.async = true;
-      document.body.appendChild(script);
-
-      return () => {
-        document.body.removeChild(script);
-      };
-    }
-  }, [isOpen]);
+    (async function () {
+      const cal = await getCalApi();
+      cal('ui', {
+        theme: siteConfig.booking.embedConfig.theme as 'light' | 'dark',
+        styles: {
+          branding: {
+            brandColor: siteConfig.booking.embedConfig.brandColor,
+          },
+        },
+        hideEventTypeDetails: siteConfig.booking.embedConfig.hideEventTypeDetails,
+      });
+    })();
+  }, []);
 
   const calLink = `${siteConfig.booking.calUsername}/${siteConfig.booking.defaultEventType}`;
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] flex flex-col p-0">
+      <DialogContent className="max-w-5xl w-[95vw] h-[95vh] md:h-[90vh] flex flex-col p-0 gap-0">
         {/* Header */}
-        <DialogHeader className="p-6 border-b border-emerald-100 bg-gradient-to-r from-emerald-50 to-white">
-          <DialogTitle className="text-2xl font-bold text-emerald-900">
+        <DialogHeader className="p-4 md:p-6 border-b border-emerald-100 bg-linear-to-r from-emerald-50 to-white shrink-0">
+          <DialogTitle className="text-xl md:text-2xl font-bold text-emerald-900">
             Book Your Session
           </DialogTitle>
-          <DialogDescription className="text-slate-600 mt-1">
+          <DialogDescription className="text-sm md:text-base text-slate-600 mt-1">
             Select a time that works best for you
           </DialogDescription>
         </DialogHeader>
 
         {/* Cal.com Embed */}
-        <div className="flex-1 overflow-auto p-4">
-          <div
-            data-cal-link={calLink}
-            data-cal-config='{"theme":"light"}'
-            style={{ width: '100%', height: '100%', minHeight: '600px', overflow: 'auto' }}
+        <div className="flex-1 overflow-auto min-h-0">
+          <Cal
+            calLink={calLink}
+            style={{ width: '100%', height: '100%', minHeight: '500px' }}
+            config={{
+              theme: siteConfig.booking.embedConfig.theme as 'light' | 'dark',
+            }}
           />
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-emerald-100 bg-emerald-50 text-center text-sm text-slate-600">
+        <div className="p-3 md:p-4 border-t border-emerald-100 bg-emerald-50 text-center text-xs md:text-sm text-slate-600 shrink-0">
           <p>
             Questions? Call us at{' '}
             <a
