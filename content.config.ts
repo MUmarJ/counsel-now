@@ -166,7 +166,7 @@ export const siteConfig = {
     },
     photo: {
       type: "photo", // "photo" | "placeholder"
-      path: "/images/shaikh-about.jpg",
+      path: "/images/shaikh-about.png",
       alt: "Shaikh Mendez",
     },
   },
@@ -266,9 +266,9 @@ export const siteConfig = {
     ],
     socialMedia: [
       // Optional social media links
-      // { platform: "facebook", url: "https://facebook.com/shaikhcounseling" },
-      // { platform: "instagram", url: "https://instagram.com/shaikhcounseling" },
-      // { platform: "linkedin", url: "https://linkedin.com/in/shaikhcounseling" },
+      { platform: "facebook", url: "https://facebook.com/shaikhcounseling" },
+      { platform: "instagram", url: "https://www.instagram.com/adeyinka.mendes/" },
+      { platform: "linkedin", url: "https://linkedin.com/in/shaikhcounseling" },
     ],
   },
 
