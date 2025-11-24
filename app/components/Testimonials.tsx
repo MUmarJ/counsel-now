@@ -86,6 +86,11 @@ export default function Testimonials() {
                       <p className="font-semibold text-emerald-900">
                         {testimonial.name}
                       </p>
+                      {'service' in testimonial && (
+                        <p className="text-xs text-slate-500">
+                          {testimonial.service} • {testimonial.year}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </CardFooter>

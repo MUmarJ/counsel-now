@@ -1,9 +1,20 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Heart, BookOpen, Sparkles, Clock, DollarSign, Users, Calendar, Mic, Globe, Star } from 'lucide-react';
-import { siteConfig } from '@/content.config';
-import { Button } from '@/components/ui/button';
+import { motion } from "framer-motion";
+import {
+  Heart,
+  BookOpen,
+  Sparkles,
+  Clock,
+  Users,
+  Calendar,
+  Mic,
+  Globe,
+  Star,
+  Quote,
+} from "lucide-react";
+import { siteConfig } from "@/content.config";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -11,22 +22,21 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@/components/ui/tabs';
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion';
-import { Badge } from '@/components/ui/badge';
+} from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 
-export default function Services({ onBookingClick }: { onBookingClick: () => void }) {
+export default function Services({
+  onBookingClick,
+}: {
+  onBookingClick: () => void;
+}) {
   const iconMap: Record<string, React.ElementType> = {
     Heart,
     BookOpen,
@@ -81,16 +91,16 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
                   transition={{
                     duration: 0.6,
                     delay: index * 0.1,
-                    ease: [0.25, 0.4, 0.25, 1]
+                    ease: [0.25, 0.4, 0.25, 1],
                   }}
                   className="group h-full"
                 >
                   <Card className="h-full bg-gradient-to-br from-white to-emerald-50 border-2 border-emerald-200 hover:border-emerald-400 hover:shadow-xl transition-all duration-300 flex flex-col relative overflow-hidden">
-                    {'popular' in service && service.popular && (
+                    {"popular" in service && service.popular && (
                       <div className="absolute top-4 right-4">
                         <Badge className="bg-amber-100 text-amber-800 border-amber-200">
                           <Star className="w-3 h-3 mr-1 fill-amber-500 text-amber-500" />
-                          Most Popular
+                          Most Requested
                         </Badge>
                       </div>
                     )}
@@ -110,27 +120,53 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
                       <div className="space-y-2 text-sm">
                         <div className="flex items-center justify-between">
                           <span className="text-slate-500">Duration</span>
-                          <span className="font-medium text-slate-700">{service.duration}</span>
+                          <span className="font-medium text-slate-700">
+                            {service.duration}
+                          </span>
                         </div>
                         <div className="flex items-center justify-between">
                           <span className="text-slate-500">
-                            {'priceNote' in service ? service.priceNote : 'Price'}
+                            {"priceNote" in service
+                              ? service.priceNote
+                              : "Price"}
                           </span>
-                          <span className="font-semibold text-emerald-700">${service.price}</span>
+                          <span className="font-semibold text-emerald-700">
+                            ${service.price}
+                          </span>
                         </div>
-                        {'altPrice' in service && (
+                        {"altPrice" in service && (
                           <div className="flex items-center justify-between">
-                            <span className="text-slate-500">{service.altPriceNote}</span>
-                            <span className="font-semibold text-emerald-700">${service.altPrice}</span>
+                            <span className="text-slate-500">
+                              {service.altPriceNote}
+                            </span>
+                            <span className="font-semibold text-emerald-700">
+                              ${service.altPrice}
+                            </span>
                           </div>
                         )}
-                        {'followUpPrice' in service && (
+                        {"followUpPrice" in service && (
                           <div className="flex items-center justify-between text-xs text-slate-400">
                             <span>Follow-up sessions</span>
                             <span>${service.followUpPrice}</span>
                           </div>
                         )}
                       </div>
+
+                      {"testimonial" in service && service.testimonial && (
+                        <div className="mt-4 pt-3 border-t border-emerald-100">
+                          <div className="flex items-start gap-2">
+                            <Quote className="w-3 h-3 text-emerald-400 shrink-0 mt-1" />
+                            <div>
+                              <p className="text-xs italic text-slate-600">
+                                &ldquo;{service.testimonial.text}&rdquo;
+                              </p>
+                              <p className="text-xs text-slate-400 mt-1">
+                                — {service.testimonial.name}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </CardContent>
 
                     <CardFooter className="shrink-0 mt-auto">
@@ -204,12 +240,14 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
                                 {service.duration}
                               </div>
                               <div className="font-semibold text-emerald-700">
-                                {service.price.includes('Contact') ? (
-                                  <span className="text-xs">{service.price}</span>
+                                {service.price.includes("Contact") ? (
+                                  <span className="text-xs">
+                                    {service.price}
+                                  </span>
                                 ) : (
                                   <>
                                     ${service.price}
-                                    {'priceNote' in service && (
+                                    {"priceNote" in service && (
                                       <span className="text-xs text-slate-400 ml-1">
                                         ({service.priceNote})
                                       </span>
@@ -218,7 +256,7 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
                                 )}
                               </div>
                             </div>
-                            {'altPrice' in service && (
+                            {"altPrice" in service && (
                               <div className="text-xs text-slate-500 mb-3">
                                 or ${service.altPrice} ({service.altPriceNote})
                               </div>
@@ -257,7 +295,9 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
                         <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center mr-3">
                           <Icon className="w-4 h-4 text-emerald-600" />
                         </div>
-                        <span className="font-semibold text-emerald-900">{category.name}</span>
+                        <span className="font-semibold text-emerald-900">
+                          {category.name}
+                        </span>
                         <Badge variant="secondary" className="ml-2 text-xs">
                           {category.services.length}
                         </Badge>
@@ -275,9 +315,13 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
                                 {service.description}
                               </p>
                               <div className="flex items-center justify-between text-sm mb-3">
-                                <span className="text-slate-500">{service.duration}</span>
+                                <span className="text-slate-500">
+                                  {service.duration}
+                                </span>
                                 <span className="font-semibold text-emerald-700">
-                                  {service.price.includes('Contact') ? service.price : `$${service.price}`}
+                                  {service.price.includes("Contact")
+                                    ? service.price
+                                    : `$${service.price}`}
                                 </span>
                               </div>
                               <Button

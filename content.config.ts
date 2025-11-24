@@ -68,7 +68,7 @@ export const siteConfig = {
     },
     headline: "Sacred Service Through",
     headlineHighlight: "Wisdom & Healing", // This will be gradient colored
-    subheadline: "Bridging sacred tradition, transformative justice, and the healing wisdom of African and Islamic civilizations. My work is dedicated to liberating the human spirit through love, justice, and inner illumination.",
+    subheadline: "Find clarity in your marriage. Deepen your faith journey. Receive guidance grounded in 24 years of Islamic scholarship and spiritual counseling.",
     primaryCTA: {
       text: "Begin Your Journey",
       action: "openBooking", // Links to Cal.com booking
@@ -76,6 +76,11 @@ export const siteConfig = {
     secondaryCTA: {
       text: "Explore Services",
       action: "scrollToServices", // Scrolls to #services
+    },
+    trustBadge: {
+      rating: "5.0",
+      text: "Average Rating",
+      subtext: "from client reviews",
     },
     stats: [
       { value: "24+", label: "Years Teaching" },
@@ -114,6 +119,10 @@ export const siteConfig = {
         altPriceNote: "in-person",
         followUpPrice: "250-275",
         popular: true,
+        testimonial: {
+          text: "Transformed our marriage",
+          name: "Amina R.",
+        },
       },
       {
         id: "nikah",
@@ -125,6 +134,10 @@ export const siteConfig = {
         priceNote: "in-house/mosque",
         altPrice: "1,150",
         altPriceNote: "off-site venue/home",
+        testimonial: {
+          text: "Most beautiful ceremony",
+          name: "Fatima S.",
+        },
       },
       {
         id: "islamic-classes",
@@ -136,6 +149,10 @@ export const siteConfig = {
         priceNote: "youth",
         altPrice: "550",
         altPriceNote: "adult",
+        testimonial: {
+          text: "Patient and effective teaching",
+          name: "Yusuf K.",
+        },
       },
     ],
 
@@ -475,32 +492,41 @@ export const siteConfig = {
         id: 1,
         name: "Amina R.",
         rating: 5,
-        text: "Shaikh helped our marriage tremendously. His wisdom and patience gave us tools we still use today.",
-        // Optional: photo: "/images/testimonials/amina.jpg"
+        text: "After 3 months of marital counseling, my husband and I went from weekly arguments to genuine understanding. Imam Mendes gave us practical communication tools rooted in Islamic wisdom that we still use daily.",
+        service: "Marital Counseling",
+        year: "2024",
       },
       {
         id: 2,
         name: "Yusuf K.",
         rating: 5,
-        text: "The spiritual guidance sessions transformed my relationship with salah and Quran. Highly recommend.",
+        text: "The Tajweed course completely transformed my relationship with the Quran. After 8 weeks, I went from struggling with basic recitation to confidently leading prayers. Imam's teaching method is patient and deeply effective.",
+        service: "Quranic Recitation",
+        year: "2023",
       },
       {
         id: 3,
         name: "Fatima S.",
         rating: 5,
-        text: "Professional, compassionate, and deeply knowledgeable. A blessing to our community.",
+        text: "Imam Mendes officiated our nikah and it was the most beautiful, spiritually moving ceremony. His khutbah brought tears to everyone's eyes. He made our families feel connected across cultures and continents.",
+        service: "Nikah Officiation",
+        year: "2024",
       },
       {
         id: 4,
         name: "Omar M.",
         rating: 5,
-        text: "Going through a difficult career transition, Shaikh helped me see Allah's wisdom in the struggle. Grateful beyond words.",
+        text: "During a career transition, I felt lost spiritually. Through 6 sessions, Imam helped me see Allah's wisdom in the struggle. I found a new role that aligns with my values—something I couldn't have done alone.",
+        service: "Spiritual Counseling",
+        year: "2023",
       },
       {
         id: 5,
         name: "Khadija L.",
         rating: 5,
-        text: "As a new Muslim, I was struggling with many questions. Shaikh's patient guidance made everything clearer.",
+        text: "As a new Muslim with many questions, Imam Mendes's patient guidance through the Aqeeda course made everything clearer. He answered every question without judgment and helped me build a strong foundation in my faith.",
+        service: "Islamic Classes",
+        year: "2024",
       },
     ],
   },

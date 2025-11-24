@@ -90,6 +90,7 @@ export default function Hero({
               {siteConfig.hero.secondaryCTA.text}
             </Button>
           </motion.div>
+
           {/* Stats - Clean, no icons */}
           <motion.div
             initial={{ opacity: 0 }}

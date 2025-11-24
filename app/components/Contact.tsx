@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { siteConfig } from '@/content.config';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -139,6 +139,32 @@ export default function Contact({ onBookingClick }: { onBookingClick: () => void
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 pt-8 border-t border-emerald-200 text-center"
         >
+          {/* Social Media Links */}
+          {siteConfig.contact.socialMedia && siteConfig.contact.socialMedia.length > 0 && (
+            <div className="flex justify-center space-x-4 mb-6">
+              {siteConfig.contact.socialMedia.map((social, index) => {
+                const iconMap: Record<string, React.ElementType> = {
+                  facebook: Facebook,
+                  instagram: Instagram,
+                  linkedin: Linkedin,
+                };
+                const Icon = iconMap[social.platform] || Facebook;
+                return (
+                  <a
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-emerald-100 hover:bg-emerald-600 rounded-full flex items-center justify-center text-emerald-600 hover:text-white transition-all duration-300"
+                    aria-label={`Follow us on ${social.platform}`}
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                );
+              })}
+            </div>
+          )}
+
           <p className="text-slate-600 mb-4">
             © {new Date().getFullYear()} {siteConfig.metadata.siteName}. All rights reserved.
           </p>
