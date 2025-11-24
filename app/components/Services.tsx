@@ -243,7 +243,7 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
 
           {/* Mobile: Accordion */}
           <div className="md:hidden">
-            <Accordion type="single" collapsible className="w-full space-y-2">
+            <Accordion type="single" collapsible className="w-full space-y-3">
               {siteConfig.services.categories.map((category) => {
                 const Icon = getIcon(category.icon);
                 return (
