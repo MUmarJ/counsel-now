@@ -25,20 +25,20 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-20 bg-white">
+    <section id="testimonials" className="py-28 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-emerald-900 mb-4">
+          <h2 className="text-section-title font-bold text-emerald-900 mb-6">
             {siteConfig.testimonials.heading}
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto prose-relaxed">
             {siteConfig.testimonials.subheading}
           </p>
         </motion.div>
@@ -48,10 +48,14 @@ export default function Testimonials() {
           {siteConfig.testimonials.items.map((testimonial, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.1,
+                ease: [0.25, 0.4, 0.25, 1]
+              }}
               className="group h-full"
             >
               <Card className="h-full bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 hover:shadow-xl hover:border-emerald-300 transition-all duration-300">
@@ -92,11 +96,11 @@ export default function Testimonials() {
 
         {/* Overall Rating */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16 text-center"
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-20 text-center"
         >
           <Card className="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white border-0 shadow-xl">
             <CardContent className="px-8 py-6">

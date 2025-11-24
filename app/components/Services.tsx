@@ -31,20 +31,20 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
   };
 
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="services" className="py-28 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-emerald-900 mb-4">
+          <h2 className="text-section-title font-bold text-emerald-900 mb-6">
             {siteConfig.services.heading}
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto prose-relaxed">
             {siteConfig.services.subheading}
           </p>
         </motion.div>
@@ -57,10 +57,14 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
             return (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15,
+                  ease: [0.25, 0.4, 0.25, 1]
+                }}
                 className="group h-full"
               >
                 <Card className="h-full bg-gradient-to-br from-white to-emerald-50 border-2 border-emerald-100 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 flex flex-col">
@@ -114,9 +118,9 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
                   <CardFooter className="shrink-0 mt-auto">
                     <Button
                       onClick={onBookingClick}
-                      className="w-full bg-emerald-600 text-white hover:bg-emerald-700 hover:shadow-lg transition-all duration-300"
+                      className="w-full bg-emerald-600 text-white hover:bg-emerald-700 hover:shadow-lg transition-all duration-300 py-6"
                     >
-                      Book This Service
+                      Schedule Session
                     </Button>
                   </CardFooter>
                 </Card>
@@ -127,22 +131,25 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-12"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center mt-16"
         >
-          <p className="text-slate-600 mb-4">
-            Not sure which service is right for you?
+          <p className="text-slate-600 mb-6 text-lg">
+            Not sure which service fits your needs?
           </p>
           <Button
             onClick={onBookingClick}
             size="lg"
-            className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-8 py-6 rounded-xl hover:shadow-xl hover:shadow-emerald-600/30 transition-all duration-300 font-semibold transform hover:-translate-y-1"
+            className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-10 py-7 rounded-xl hover:shadow-xl hover:shadow-emerald-600/30 transition-all duration-300 font-semibold transform hover:-translate-y-1"
           >
-            Schedule a Consultation
+            Book a Free Consultation
           </Button>
+          <p className="text-sm text-slate-500 mt-4">
+            We'll help you find the right path forward
+          </p>
         </motion.div>
       </div>
     </section>

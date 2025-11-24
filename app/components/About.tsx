@@ -10,17 +10,17 @@ export default function About() {
   const highlightIcons = [Calendar, Globe, Award];
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-emerald-50 to-white pattern-bg">
+    <section id="about" className="py-28 bg-gradient-to-b from-emerald-50 to-white pattern-bg">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-emerald-900 mb-4">
+          <h2 className="text-section-title font-bold text-emerald-900 mb-6">
             {siteConfig.about.heading}
           </h2>
           <p className="text-emerald-700 text-xl font-medium italic">
@@ -32,10 +32,10 @@ export default function About() {
         <div className="grid lg:grid-cols-5 gap-12 items-start">
           {/* Image Column */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
             className="lg:col-span-2 lg:sticky lg:top-24 space-y-6"
           >
             {siteConfig.about.photo.type === 'photo' ? (
@@ -88,11 +88,11 @@ export default function About() {
 
           {/* Content Column */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-3 space-y-8"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:col-span-3 space-y-10"
           >
             {/* Bio Sections */}
             <div className="space-y-6">

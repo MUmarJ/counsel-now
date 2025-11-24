@@ -7,20 +7,20 @@ import { Card, CardContent } from '@/components/ui/card';
 
 export default function WrittenWorks() {
   return (
-    <section id="publications" className="py-20 bg-gradient-to-b from-white to-emerald-50">
+    <section id="publications" className="py-28 bg-gradient-to-b from-white to-emerald-50">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-emerald-900 mb-4">
+          <h2 className="text-section-title font-bold text-emerald-900 mb-6">
             {siteConfig.writtenWorks.heading}
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto prose-relaxed">
             {siteConfig.writtenWorks.subheading}
           </p>
         </motion.div>
@@ -28,10 +28,10 @@ export default function WrittenWorks() {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Featured Book & Translation */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
             className="space-y-6"
           >
             {/* Featured Book */}
@@ -76,10 +76,10 @@ export default function WrittenWorks() {
 
           {/* Speaking Topics */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.4, 0.25, 1] }}
           >
             <Card className="border-emerald-100 h-full">
               <CardContent className="p-6">

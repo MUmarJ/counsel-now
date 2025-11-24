@@ -70,11 +70,11 @@ export const siteConfig = {
     headlineHighlight: "Wisdom & Healing", // This will be gradient colored
     subheadline: "Bridging sacred tradition, transformative justice, and the healing wisdom of African and Islamic civilizations. My work is dedicated to liberating the human spirit through love, justice, and inner illumination.",
     primaryCTA: {
-      text: "Schedule Consultation",
+      text: "Begin Your Journey",
       action: "openBooking", // Links to Cal.com booking
     },
     secondaryCTA: {
-      text: "View Services",
+      text: "Explore Services",
       action: "scrollToServices", // Scrolls to #services
     },
     stats: [
