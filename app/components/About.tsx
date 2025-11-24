@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CheckCircle, Quote, Award, Globe, Calendar } from 'lucide-react';
+import { Quote, Award, Globe, Calendar, Building2, GraduationCap, Users } from 'lucide-react';
 import Image from 'next/image';
 import { siteConfig } from '@/content.config';
 import { Card, CardContent } from '@/components/ui/card';
@@ -122,25 +122,63 @@ export default function About() {
               </div>
             </div>
 
-            {/* Credentials - Compact Grid */}
+            {/* Credentials - Featured Award + Grid */}
             <div>
-              <h3 className="text-xl font-bold text-emerald-900 mb-4">
+              <h3 className="text-xl font-bold text-emerald-900 mb-6">
                 Leadership & Affiliations
               </h3>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {siteConfig.about.credentials.map((credential, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className="flex items-start gap-2 p-3 bg-white rounded-lg border border-emerald-100 hover:border-emerald-300 transition-colors"
-                  >
-                    <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-slate-700">{credential.text}</span>
-                  </motion.div>
-                ))}
+
+              {/* Featured Award */}
+              {siteConfig.about.credentials.filter(c => c.category === 'recognition').map((credential, index) => (
+                <motion.div
+                  key={`award-${index}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="mb-5 p-5 bg-amber-50 rounded-xl border-2 border-amber-200 hover:border-amber-300 transition-colors"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center shrink-0">
+                      <Award className="w-6 h-6 text-amber-600" />
+                    </div>
+                    <div>
+                      <p className="text-base font-semibold text-amber-900">{credential.role}</p>
+                      <p className="text-sm text-amber-700">{credential.org}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+
+              {/* Other Credentials Grid */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                {siteConfig.about.credentials.filter(c => c.category !== 'recognition').map((credential, index) => {
+                  const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+                    Building2,
+                    GraduationCap,
+                    Users,
+                  };
+                  const Icon = iconMap[credential.icon] || Building2;
+
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.08 }}
+                      className="flex items-start gap-3 p-4 bg-white rounded-xl border border-emerald-100 hover:border-emerald-300 hover:shadow-sm transition-all"
+                    >
+                      <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center shrink-0">
+                        <Icon className="w-5 h-5 text-emerald-600" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-base font-semibold text-emerald-900">{credential.role}</p>
+                        <p className="text-sm text-slate-500 leading-snug">{credential.org}</p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </motion.div>
