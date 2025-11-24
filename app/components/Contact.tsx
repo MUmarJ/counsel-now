@@ -140,9 +140,9 @@ export default function Contact({ onBookingClick }: { onBookingClick: () => void
           className="mt-16 pt-8 border-t border-emerald-200 text-center"
         >
           {/* Social Media Links */}
-          {siteConfig.contact.socialMedia && siteConfig.contact.socialMedia.length > 0 && (
+          {siteConfig.footer.socialMedia && siteConfig.footer.socialMedia.length > 0 && (
             <div className="flex justify-center space-x-4 mb-6">
-              {siteConfig.contact.socialMedia.map((social, index) => {
+              {siteConfig.footer.socialMedia.map((social, index) => {
                 const iconMap: Record<string, React.ElementType> = {
                   facebook: Facebook,
                   instagram: Instagram,
