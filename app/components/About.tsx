@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Quote, Award, Globe, Calendar, Building2, GraduationCap, Users } from 'lucide-react';
+import { Quote, Award, Globe, Calendar, BookOpen } from 'lucide-react';
 import Image from 'next/image';
 import { siteConfig } from '@/content.config';
 import { Card, CardContent } from '@/components/ui/card';
@@ -64,7 +64,7 @@ export default function About() {
 
             {/* Trust Signals - By the Numbers */}
             {siteConfig.about.highlights && (
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 gap-3">
                 {siteConfig.about.highlights.map((highlight, index) => {
                   const Icon = highlightIcons[index];
                   return (
@@ -74,11 +74,14 @@ export default function About() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.1 }}
-                      className="text-center p-3 bg-white rounded-xl border border-emerald-100 shadow-sm"
                     >
-                      <Icon className="w-5 h-5 text-emerald-600 mx-auto mb-1" />
-                      <div className="text-lg font-bold text-emerald-900">{highlight.value}</div>
-                      <div className="text-xs text-slate-500">{highlight.label}</div>
+                      <Card className="text-center border-emerald-100">
+                        <CardContent className="p-4">
+                          <Icon className="w-5 h-5 text-emerald-600 mx-auto mb-2" />
+                          <div className="text-xl font-bold text-emerald-900">{highlight.value}</div>
+                          <div className="text-xs text-slate-500">{highlight.label}</div>
+                        </CardContent>
+                      </Card>
                     </motion.div>
                   );
                 })}
@@ -103,7 +106,7 @@ export default function About() {
 
               {/* Journey */}
               <div>
-                <h3 className="text-sm font-semibold text-emerald-600 uppercase tracking-wide mb-2">
+                <h3 className="text-base font-semibold text-emerald-700 mb-3">
                   My Journey
                 </h3>
                 <p className="text-slate-600 leading-relaxed">
@@ -113,8 +116,8 @@ export default function About() {
 
               {/* Training */}
               <div>
-                <h3 className="text-sm font-semibold text-emerald-600 uppercase tracking-wide mb-2">
-                  Sacred Training
+                <h3 className="text-base font-semibold text-emerald-700 mb-3">
+                  Education & Training
                 </h3>
                 <p className="text-slate-600 leading-relaxed">
                   {siteConfig.about.trainingParagraph}
@@ -122,13 +125,33 @@ export default function About() {
               </div>
             </div>
 
-            {/* Credentials - Featured Award + Grid */}
+            {/* Service & Credentials */}
             <div>
               <h3 className="text-xl font-bold text-emerald-900 mb-6">
-                Leadership & Affiliations
+                Service & Leadership
               </h3>
 
-              {/* Featured Award */}
+              {/* Service Roles (Imam positions) - Most important for counseling trust */}
+              <div className="space-y-3 mb-5">
+                {siteConfig.about.credentials.filter(c => c.category === 'service').map((credential, index) => (
+                  <motion.div
+                    key={`service-${index}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                  >
+                    <Card className="bg-emerald-50 border-l-4 border-l-emerald-600 border-emerald-100">
+                      <CardContent className="p-4">
+                        <p className="text-base font-semibold text-slate-900">{credential.role}</p>
+                        <p className="text-sm text-slate-600">{credential.org}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Award */}
               {siteConfig.about.credentials.filter(c => c.category === 'recognition').map((credential, index) => (
                 <motion.div
                   key={`award-${index}`}
@@ -136,51 +159,75 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="mb-5 p-5 bg-amber-50 rounded-xl border-2 border-amber-200 hover:border-amber-300 transition-colors"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center shrink-0">
-                      <Award className="w-6 h-6 text-amber-600" />
-                    </div>
-                    <div>
-                      <p className="text-base font-semibold text-amber-900">{credential.role}</p>
-                      <p className="text-sm text-amber-700">{credential.org}</p>
-                    </div>
-                  </div>
+                  <Card className="mb-5 bg-amber-50 border-l-4 border-l-amber-500 border-amber-100">
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-3">
+                        <Award className="w-5 h-5 text-amber-600 shrink-0" />
+                        <div>
+                          <p className="text-base font-semibold text-slate-900">{credential.role}</p>
+                          <p className="text-sm text-slate-600">{credential.org}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </motion.div>
               ))}
 
-              {/* Other Credentials Grid */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                {siteConfig.about.credentials.filter(c => c.category !== 'recognition').map((credential, index) => {
-                  const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-                    Building2,
-                    GraduationCap,
-                    Users,
-                  };
-                  const Icon = iconMap[credential.icon] || Building2;
-
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.08 }}
-                      className="flex items-start gap-3 p-4 bg-white rounded-xl border border-emerald-100 hover:border-emerald-300 hover:shadow-sm transition-all"
-                    >
-                      <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center shrink-0">
-                        <Icon className="w-5 h-5 text-emerald-600" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-base font-semibold text-emerald-900">{credential.role}</p>
-                        <p className="text-sm text-slate-500 leading-snug">{credential.org}</p>
-                      </div>
-                    </motion.div>
-                  );
-                })}
+              {/* Other Credentials */}
+              <div className="grid sm:grid-cols-2 gap-3">
+                {siteConfig.about.credentials.filter(c => !['recognition', 'service'].includes(c.category)).map((credential, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                  >
+                    <Card className="hover:border-emerald-300 transition-colors h-full">
+                      <CardContent className="p-4">
+                        <p className="text-sm font-semibold text-slate-800">{credential.role}</p>
+                        <p className="text-sm text-slate-500">{credential.org}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
               </div>
             </div>
+
+            {/* Publication */}
+            {siteConfig.about.publication && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <h3 className="text-base font-semibold text-emerald-700 mb-3">
+                  Featured Work
+                </h3>
+                <a
+                  href={siteConfig.about.publication.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block group"
+                >
+                  <Card className="bg-slate-50 hover:border-emerald-300 hover:bg-emerald-50 transition-all">
+                    <CardContent className="p-4">
+                      <div className="flex items-start gap-3">
+                        <BookOpen className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-sm font-semibold text-slate-800 group-hover:text-emerald-900">
+                            {siteConfig.about.publication.title}
+                          </p>
+                          <p className="text-xs text-slate-500">{siteConfig.about.publication.subtitle}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </a>
+              </motion.div>
+            )}
           </motion.div>
         </div>
 

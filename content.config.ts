@@ -141,50 +141,63 @@ export const siteConfig = {
     greeting: "As-salamu alaykum.",
     introParagraph: "I'm Imam Adéyínká Muhammad Mendes, a spiritual leader, translator, educator, and public speaker whose work bridges sacred tradition, transformative justice, and the healing wisdom of African and Islamic civilizations.",
     journeyParagraph: "Born in Dayton, Ohio in 1975 to an African-American attorney and a Nigerian physician, I was raised where respect for diverse faiths, cultures, and the pursuit of justice were core values. My formative years included a pivotal move to Lagos, Nigeria, where I was deeply influenced by traditional African spirituality, communal living, and interfaith harmony. A life-changing journey to Jerusalem in 1993 led me to embrace Islam and dedicate my life to spiritual scholarship and service.",
-    trainingParagraph: "I studied Classical Arabic, theology, jurisprudence, and spiritual psychology under traditional masters across West Africa, the Middle East, and North Africa—including in Syria, Sudan, Mauritania, Morocco, Senegal, and Nigeria. Since 2001, I have taught these sacred sciences across the globe.",
+    trainingParagraph: "After attending Morehouse College and Ohio State University, I traveled around the world studying Classical Arabic, theology, sacred jurisprudence, contemplative arts, and the science of spiritual illumination from living masters in Syria, Sudan, Mauritania, Morocco, Nigeria, and Senegal. I have been teaching these and other sacred sciences since 2001.",
+    education: [
+      { institution: "Morehouse College", location: "Atlanta, GA" },
+      { institution: "Ohio State University", location: "Columbus, OH" },
+    ],
     highlights: [
       { value: "24+", label: "Years Teaching" },
       { value: "Global", label: "Speaker" },
       { value: "2020", label: "Spiritual Impact Award" },
     ],
     credentials: [
+      // {
+      //   category: "service",
+      //   role: "Imam & Scholar-in-Residence",
+      //   org: "Muslim Center of Greater Princeton, NJ",
+      // },
+      // {
+      //   category: "service",
+      //   role: "Imam",
+      //   org: "Masjid al-Mo'mineen & Madina Institute Masjid, GA",
+      // },
       {
         category: "recognition",
         role: "2020 Spiritual Impact Award",
         org: "Center for Global Muslim Life",
-        icon: "Award",
-      },
-      {
-        category: "leadership",
-        role: "Founder",
-        org: "The Nibras Foundation",
-        icon: "Building2",
-      },
-      {
-        category: "leadership",
-        role: "Founder",
-        org: "Bilal Spiritual Center for Peace and the Arts",
-        icon: "Building2",
-      },
-      {
-        category: "leadership",
-        role: "Co-founder",
-        org: "AHAD Collective",
-        icon: "Building2",
       },
       {
         category: "teaching",
         role: "Teacher",
         org: "CelebrateMercy, Wasat, Rumi Center for Spirituality and the Arts",
-        icon: "GraduationCap",
+      },
+      {
+        category: "leadership",
+        role: "Founder",
+        org: "The Nibras Foundation",
+      },
+      {
+        category: "leadership",
+        role: "Founder",
+        org: "Bilal Spiritual Center for Peace and the Arts",
+      },
+      {
+        category: "leadership",
+        role: "Co-founder",
+        org: "AHAD Collective",
       },
       {
         category: "advisory",
         role: "Advisory Board",
         org: "Goodtree Institute, Islamic Society for Holistic Education",
-        icon: "Users",
       },
     ],
+    publication: {
+      title: "The Spirits of Black Folk: Sages Through the Ages",
+      subtitle: "Translation of Imam al-Suyuti's Rafʿ Shaʾn al-Ḥubshān",
+      link: "https://store.celebratemercy.com/products/elevating-the-importance-of-the-blacks-%d8%b1%d9%81%d8%b9-%d8%b4%d8%a3%d9%86-%d8%a7%d9%84%d8%ad%d8%a8%d8%b4%d8%a7%d9%86-by-imam-al-suyuti",
+    },
     quote: {
       text: "And whoever fears Allah - He will make for him a way out. And will provide for him from where he does not expect.",
       reference: "Quran 65:2-3",
