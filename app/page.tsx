@@ -5,6 +5,7 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import About from './components/About';
+import WrittenWorks from './components/WrittenWorks';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import BookingModal from './components/BookingModal';
@@ -21,6 +22,7 @@ export default function Home() {
       <Hero onBookingClick={openBookingModal} />
       <Services onBookingClick={openBookingModal} />
       <About />
+      <WrittenWorks />
       <Testimonials />
       <Contact onBookingClick={openBookingModal} />
       <BookingModal isOpen={isBookingModalOpen} onClose={closeBookingModal} />

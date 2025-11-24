@@ -1,23 +1,42 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CheckCircle, Quote } from 'lucide-react';
+import { CheckCircle, Quote, Award, Globe, Calendar } from 'lucide-react';
 import Image from 'next/image';
 import { siteConfig } from '@/content.config';
 import { Card, CardContent } from '@/components/ui/card';
 
 export default function About() {
+  const highlightIcons = [Calendar, Globe, Award];
+
   return (
     <section id="about" className="py-20 bg-gradient-to-b from-emerald-50 to-white pattern-bg">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Image */}
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-emerald-900 mb-4">
+            {siteConfig.about.heading}
+          </h2>
+          <p className="text-emerald-700 text-xl font-medium italic">
+            {siteConfig.about.greeting}
+          </p>
+        </motion.div>
+
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-5 gap-12 items-start">
+          {/* Image Column */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="lg:col-span-2 lg:sticky lg:top-24 space-y-6"
           >
             {siteConfig.about.photo.type === 'photo' ? (
               <div className="relative">
@@ -33,89 +52,124 @@ export default function About() {
             ) : (
               <div className="aspect-square bg-gradient-to-br from-emerald-600 to-teal-600 rounded-3xl shadow-2xl flex items-center justify-center">
                 <div className="text-white text-center p-8">
-                  <div className="w-48 h-48 mx-auto bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 border-4 border-white/20">
-                    <span className="text-8xl font-bold">
+                  <div className="w-32 h-32 mx-auto bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 border-4 border-white/20">
+                    <span className="text-6xl font-bold">
                       {siteConfig.metadata.counselorName.split(' ')[0].charAt(0)}
                     </span>
                   </div>
-                  <h3 className="text-3xl font-bold">{siteConfig.metadata.counselorName}</h3>
+                  <h3 className="text-2xl font-bold">{siteConfig.metadata.counselorName}</h3>
                 </div>
+              </div>
+            )}
+
+            {/* Trust Signals - By the Numbers */}
+            {siteConfig.about.highlights && (
+              <div className="grid grid-cols-3 gap-2">
+                {siteConfig.about.highlights.map((highlight, index) => {
+                  const Icon = highlightIcons[index];
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      className="text-center p-3 bg-white rounded-xl border border-emerald-100 shadow-sm"
+                    >
+                      <Icon className="w-5 h-5 text-emerald-600 mx-auto mb-1" />
+                      <div className="text-lg font-bold text-emerald-900">{highlight.value}</div>
+                      <div className="text-xs text-slate-500">{highlight.label}</div>
+                    </motion.div>
+                  );
+                })}
               </div>
             )}
           </motion.div>
 
-          {/* Content */}
+          {/* Content Column */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="lg:col-span-3 space-y-8"
           >
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-emerald-900 mb-4">
-                {siteConfig.about.heading}
-              </h2>
-              <p className="text-emerald-700 text-lg font-medium italic">
-                {siteConfig.about.greeting}
+            {/* Bio Sections */}
+            <div className="space-y-6">
+              {/* Intro */}
+              <p className="text-lg font-medium text-slate-700 leading-relaxed">
+                {siteConfig.about.introParagraph}
               </p>
+
+              {/* Journey */}
+              <div>
+                <h3 className="text-sm font-semibold text-emerald-600 uppercase tracking-wide mb-2">
+                  My Journey
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  {siteConfig.about.journeyParagraph}
+                </p>
+              </div>
+
+              {/* Training */}
+              <div>
+                <h3 className="text-sm font-semibold text-emerald-600 uppercase tracking-wide mb-2">
+                  Sacred Training
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  {siteConfig.about.trainingParagraph}
+                </p>
+              </div>
             </div>
 
-            <div className="space-y-4 text-slate-700 leading-relaxed">
-              <p className="text-lg">{siteConfig.about.introParagraph}</p>
-              <p className="text-lg">{siteConfig.about.bioParagraph}</p>
-            </div>
-
-            {/* Credentials */}
-            <div className="space-y-3 pt-4">
+            {/* Credentials - Compact Grid */}
+            <div>
               <h3 className="text-xl font-bold text-emerald-900 mb-4">
-                Credentials & Experience
+                Leadership & Affiliations
               </h3>
-              <div className="space-y-3">
+              <div className="grid sm:grid-cols-2 gap-3">
                 {siteConfig.about.credentials.map((credential, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    className="flex items-start gap-2 p-3 bg-white rounded-lg border border-emerald-100 hover:border-emerald-300 transition-colors"
                   >
-                    <Card className="border-emerald-100 hover:border-emerald-300 transition-all duration-300">
-                      <CardContent className="flex items-start space-x-3 p-4">
-                        <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-slate-700">{credential.text}</span>
-                      </CardContent>
-                    </Card>
+                    <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-slate-700">{credential.text}</span>
                   </motion.div>
                 ))}
               </div>
             </div>
-
-            {/* Quote */}
-            {siteConfig.about.quote && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <Card className="relative bg-gradient-to-br from-emerald-600 to-teal-600 text-white border-0 shadow-xl mt-8">
-                  <CardContent className="p-8">
-                    <Quote className="absolute top-4 left-4 w-12 h-12 text-white/20" />
-                    <div className="relative">
-                      <p className="text-lg md:text-xl font-medium leading-relaxed mb-4 italic">
-                        "{siteConfig.about.quote.text}"
-                      </p>
-                      <p className="text-emerald-100 text-right">
-                        — {siteConfig.about.quote.reference}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            )}
           </motion.div>
         </div>
+
+        {/* Quote - Full Width */}
+        {siteConfig.about.quote && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-16"
+          >
+            <Card className="relative bg-gradient-to-br from-emerald-600 to-teal-600 text-white border-0 shadow-xl">
+              <CardContent className="p-8 md:p-12">
+                <Quote className="absolute top-4 left-4 w-12 h-12 text-white/20" />
+                <div className="relative max-w-4xl mx-auto text-center">
+                  <p className="text-xl md:text-2xl font-medium leading-relaxed mb-4 italic">
+                    &ldquo;{siteConfig.about.quote.text}&rdquo;
+                  </p>
+                  <p className="text-emerald-100">
+                    — {siteConfig.about.quote.reference}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
       </div>
     </section>
   );

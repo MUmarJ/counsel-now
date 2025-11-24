@@ -8,15 +8,15 @@ export const siteConfig = {
   // SITE METADATA
   // ========================================
   metadata: {
-    siteName: "Shaikh Counseling",
-    counselorName: "Shaikh Mendez",
-    tagline: "Islamic Life Guidance",
-    description: "Professional Islamic counseling for marriage, family, and spiritual growth. Over 15 years of experience serving the community.",
-    url: "https://shaikhcounseling.com",
+    siteName: "Imam Mendes",
+    counselorName: "Imam Adéyínká Muhammad Mendes",
+    tagline: "Sacred Tradition • Transformative Justice • Ancestral Healing",
+    description: "Spiritual leadership bridging sacred tradition, transformative justice, and the healing wisdom of African and Islamic civilizations. Over 24 years of teaching sacred sciences globally.",
+    url: "https://imammendes.com",
     email: "contact@shaikhcounseling.com",
     phone: "(555) 123-4567",
-    location: "Princeton, NJ",
-    timezone: "America/New_York",
+    location: "Houston, TX",
+    timezone: "America/Chicago",
   },
 
   // ========================================
@@ -26,10 +26,10 @@ export const siteConfig = {
     // Logo can be text, image path, or both
     logo: {
       type: "both", // "text" | "image" | "both"
-      text: "Shaikh Counseling", // Brand text
+      text: "Imam Mendes", // Brand text
       imagePath: "/images/brand-logo.svg", // Path to logo file in /public folder
       textImagePath: "/images/brand-text.svg", // Path to brand text image
-      alt: "Shaikh Counseling Logo",
+      alt: "Imam Mendes Logo",
       logoColor: "#046e50", // Fill color for logo SVG
       textColor: "#047857", // Fill color for text SVG (#07875B per request)
     },
@@ -64,11 +64,11 @@ export const siteConfig = {
   hero: {
     badge: {
       emoji: "✨",
-      text: "Professional Islamic Counseling",
+      text: "Spiritual Leader • Scholar • Educator",
     },
-    headline: "Find Peace Through",
-    headlineHighlight: "Faith & Wisdom", // This will be gradient colored
-    subheadline: "Alhamdulillah, I've had the honor of guiding families and individuals for over 15 years. Together, we'll navigate life's challenges with Islamic principles and compassionate care.",
+    headline: "Sacred Service Through",
+    headlineHighlight: "Wisdom & Healing", // This will be gradient colored
+    subheadline: "Bridging sacred tradition, transformative justice, and the healing wisdom of African and Islamic civilizations. My work is dedicated to liberating the human spirit through love, justice, and inner illumination.",
     primaryCTA: {
       text: "Schedule Consultation",
       action: "openBooking", // Links to Cal.com booking
@@ -78,17 +78,17 @@ export const siteConfig = {
       action: "scrollToServices", // Scrolls to #services
     },
     stats: [
-      { value: "15+", label: "Years Experience" },
-      { value: "500+", label: "Families Helped" },
-      { value: "98%", label: "Satisfaction Rate" },
+      { value: "24+", label: "Years Teaching" },
+      { value: "Global", label: "Speaker" },
+      { value: "2020", label: "Spiritual Impact Award" },
     ],
     image: {
       type: "photo", // "placeholder" | "photo" | "illustration"
       path: "/images/shaikh-photo.jpg", // Path to image in /public folder
-      alt: "Shaikh Mendez",
+      alt: "Imam Adéyínká Muhammad Mendes",
       caption: {
-        name: "Shaikh Mendez",
-        title: "Licensed Islamic Counselor",
+        name: "Imam Mendes",
+        title: "Spiritual Leader & Scholar",
       },
     },
   },
@@ -137,26 +137,40 @@ export const siteConfig = {
   // ABOUT SECTION
   // ========================================
   about: {
-    heading: "About Shaikh",
+    heading: "About Imam Mendes",
     greeting: "As-salamu alaykum.",
-    introParagraph: "I'm Shaikh Mendez, and for over 15 years, I've been blessed to serve our community through Islamic counseling and spiritual guidance.",
-    bioParagraph: "With a Master's in Islamic Studies and certification in professional counseling, I blend traditional Islamic wisdom with contemporary therapeutic approaches. My goal is simple: help you find clarity, peace, and purpose through our beautiful deen.",
+    introParagraph: "I'm Imam Adéyínká Muhammad Mendes, a spiritual leader, translator, educator, and public speaker whose work bridges sacred tradition, transformative justice, and the healing wisdom of African and Islamic civilizations.",
+    journeyParagraph: "Born in Dayton, Ohio in 1975 to an African-American attorney and a Nigerian physician, I was raised where respect for diverse faiths, cultures, and the pursuit of justice were core values. My formative years included a pivotal move to Lagos, Nigeria, where I was deeply influenced by traditional African spirituality, communal living, and interfaith harmony. A life-changing journey to Jerusalem in 1993 led me to embrace Islam and dedicate my life to spiritual scholarship and service.",
+    trainingParagraph: "I studied Classical Arabic, theology, jurisprudence, and spiritual psychology under traditional masters across West Africa, the Middle East, and North Africa—including in Syria, Sudan, Mauritania, Morocco, Senegal, and Nigeria. Since 2001, I have taught these sacred sciences across the globe.",
+    highlights: [
+      { value: "24+", label: "Years Teaching" },
+      { value: "Global", label: "Speaker" },
+      { value: "2020", label: "Spiritual Impact Award" },
+    ],
     credentials: [
       {
         icon: "check",
-        text: "M.A. Islamic Studies, Al-Azhar University",
+        text: "Founder, The Nibras Foundation",
       },
       {
         icon: "check",
-        text: "Licensed Professional Counselor (LPC)",
+        text: "Founder, Bilal Spiritual Center for Peace and the Arts",
       },
       {
         icon: "check",
-        text: "Member, Islamic Counselors Association",
+        text: "Co-founder, AHAD Collective",
       },
       {
         icon: "check",
-        text: "Specialization in Family & Marriage Therapy",
+        text: "2020 Spiritual Impact Award, Center for Global Muslim Life",
+      },
+      {
+        icon: "check",
+        text: "Teacher: CelebrateMercy, Wasat, Rumi Center for Spirituality and the Arts",
+      },
+      {
+        icon: "check",
+        text: "Advisory Board: Goodtree Institute, Islamic Society for Holistic Education",
       },
     ],
     quote: {
@@ -167,8 +181,29 @@ export const siteConfig = {
     photo: {
       type: "photo", // "photo" | "placeholder"
       path: "/images/shaikh-about.png",
-      alt: "Shaikh Mendez",
+      alt: "Imam Adéyínká Muhammad Mendes",
     },
+  },
+
+  // ========================================
+  // WRITTEN WORKS & SPEAKING
+  // ========================================
+  writtenWorks: {
+    heading: "Publications & Speaking",
+    subheading: "Sacred texts, translations, and international speaking engagements",
+    featuredBook: {
+      title: "The Spirits of Black Folk: Sages Through the Ages",
+      description: "A groundbreaking translation of Imam al-Suyuti's writings on early Black Muslim luminaries",
+      status: "Available Now",
+    },
+    translationWork: "Engaged in the translation of sacred texts and poetry from Classical Arabic",
+    speakingTopics: [
+      "Qur'anic Spirituality",
+      "Rites of Passage for Youth and Adults",
+      "Peacebuilding and Interfaith Engagement",
+      "The Role of Black Muslim Civilizations in History and Healing",
+      "Sacred Activism and Anti-Slavery Resistance in the Americas",
+    ],
   },
 
   // ========================================
@@ -234,8 +269,8 @@ export const siteConfig = {
       {
         icon: "map",
         label: "Location",
-        value: "Princeton, NJ",
-        subvalue: "Eastern Time Zone",
+        value: "Houston, TX",
+        subvalue: "Central Time Zone",
         link: null,
       },
     ],
@@ -257,8 +292,8 @@ export const siteConfig = {
   // FOOTER
   // ========================================
   footer: {
-    tagline: "Compassionate Islamic Counseling Since 2010",
-    copyright: "© 2024 Shaikh Counseling. All rights reserved.",
+    tagline: "Sacred Service • Spiritual Beauty • Ancestral Resilience",
+    copyright: "© 2025 Imam Mendes. All rights reserved.",
     links: [
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },
@@ -294,17 +329,18 @@ export const siteConfig = {
   // SEO & META TAGS
   // ========================================
   seo: {
-    title: "Shaikh Mendez - Islamic Counseling Services | Princeton, NJ",
-    description: "Professional Islamic counseling for marriage, family, and spiritual growth. Licensed counselor with 15+ years experience. Book your consultation today.",
+    title: "Imam Adéyínká Muhammad Mendes - Spiritual Leader & Scholar | Houston, TX",
+    description: "Spiritual leadership bridging sacred tradition, transformative justice, and the healing wisdom of African and Islamic civilizations. 24+ years teaching sacred sciences globally.",
     keywords: [
-      "Islamic counseling",
-      "Muslim counselor",
-      "marriage counseling",
-      "Islamic therapy",
+      "Islamic spiritual leadership",
+      "African Islamic traditions",
       "spiritual guidance",
-      "family counseling",
-      "Princeton counselor",
-      "halal therapy",
+      "Imam Mendes",
+      "sacred sciences",
+      "transformative justice",
+      "Houston spiritual leader",
+      "Black Muslim history",
+      "ancestral healing",
     ],
     ogImage: "/images/og-image.jpg", // Social media preview image
     twitterHandle: "@shaikhcounseling", // Optional
