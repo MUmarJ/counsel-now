@@ -7,15 +7,15 @@ import { Card, CardContent } from '@/components/ui/card';
 
 export default function WrittenWorks() {
   return (
-    <section id="publications" className="py-28 bg-gradient-to-b from-white to-emerald-50">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="publications" className="py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-white to-emerald-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
           <h2 className="text-section-title font-bold text-emerald-900 mb-6">
             {siteConfig.writtenWorks.heading}
@@ -25,7 +25,7 @@ export default function WrittenWorks() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Featured Book & Translation */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}

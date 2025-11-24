@@ -31,15 +31,15 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
   };
 
   return (
-    <section id="services" className="py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="services" className="py-16 sm:py-20 lg:py-28 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
           <h2 className="text-section-title font-bold text-emerald-900 mb-6">
             {siteConfig.services.heading}
@@ -50,7 +50,7 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {siteConfig.services.items.map((service, index) => {
             const Icon = getIcon(service.icon);
 
@@ -143,7 +143,7 @@ export default function Services({ onBookingClick }: { onBookingClick: () => voi
           <Button
             onClick={onBookingClick}
             size="lg"
-            className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-10 py-7 rounded-xl hover:shadow-xl hover:shadow-emerald-600/30 transition-all duration-300 font-semibold transform hover:-translate-y-1"
+            className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-6 py-5 sm:px-10 sm:py-7 rounded-xl hover:shadow-xl hover:shadow-emerald-600/30 transition-all duration-300 font-semibold transform hover:-translate-y-1"
           >
             Book a Free Consultation
           </Button>

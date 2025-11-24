@@ -50,9 +50,21 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Typography scale for emotional impact */
 .text-hero {
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-size: clamp(2rem, 8vw, 5rem);
   line-height: 1.1;
   letter-spacing: -0.03em;
+}
+
+@media (min-width: 640px) {
+  .text-hero {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-hero {
+    font-size: clamp(3rem, 8vw, 5rem);
+  }
 }
 
 .text-section-title {

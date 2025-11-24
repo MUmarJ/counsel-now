@@ -25,15 +25,15 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="testimonials" className="py-16 sm:py-20 lg:py-28 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
           <h2 className="text-section-title font-bold text-emerald-900 mb-6">
             {siteConfig.testimonials.heading}
@@ -44,7 +44,7 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {siteConfig.testimonials.items.map((testimonial, index) => (
             <motion.div
               key={index}

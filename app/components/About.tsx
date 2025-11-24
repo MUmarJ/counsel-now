@@ -10,15 +10,15 @@ export default function About() {
   const highlightIcons = [Calendar, Globe, Award];
 
   return (
-    <section id="about" className="py-28 bg-gradient-to-b from-emerald-50 to-white pattern-bg">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="about" className="py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-emerald-50 to-white pattern-bg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 lg:mb-16"
         >
           <h2 className="text-section-title font-bold text-emerald-900 mb-6">
             {siteConfig.about.heading}
@@ -29,7 +29,7 @@ export default function About() {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-5 gap-12 items-start">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
           {/* Image Column */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}

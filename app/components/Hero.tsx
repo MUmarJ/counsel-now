@@ -33,7 +33,7 @@ export default function Hero({
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/80 via-white/50 to-white pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6 py-12 grid lg:grid-cols-2 gap-8 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
         {/* Content */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -61,7 +61,7 @@ export default function Hero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-slate-600 prose-relaxed max-w-2xl"
+              className="text-lg sm:text-xl md:text-2xl text-slate-600 prose-relaxed max-w-2xl"
             >
               {siteConfig.hero.subheadline}
             </motion.p>
@@ -77,7 +77,7 @@ export default function Hero({
             <Button
               onClick={onBookingClick}
               size="lg"
-              className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-8 py-6 rounded-xl hover:shadow-xl hover:shadow-emerald-600/30 transition-all duration-300 font-semibold text-lg transform hover:-translate-y-1"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white px-6 py-4 sm:px-8 sm:py-6 rounded-xl hover:shadow-xl hover:shadow-emerald-600/30 transition-all duration-300 font-semibold text-base sm:text-lg transform hover:-translate-y-1"
             >
               {siteConfig.hero.primaryCTA.text}
             </Button>
@@ -85,7 +85,7 @@ export default function Hero({
               onClick={scrollToServices}
               variant="outline"
               size="lg"
-              className="border-2 border-emerald-600 text-emerald-700 px-8 py-6 rounded-xl hover:bg-emerald-50 transition-all duration-300 font-semibold text-lg"
+              className="border-2 border-emerald-600 text-emerald-700 px-6 py-4 sm:px-8 sm:py-6 rounded-xl hover:bg-emerald-50 transition-all duration-300 font-semibold text-base sm:text-lg"
             >
               {siteConfig.hero.secondaryCTA.text}
             </Button>
@@ -95,11 +95,11 @@ export default function Hero({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 1 }}
-            className="flex flex-wrap gap-8 pt-6 border-t border-emerald-100"
+            className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8 pt-6 border-t border-emerald-100"
           >
             {siteConfig.hero.stats.map((stat, index) => (
               <div key={index} className="text-left">
-                <div className="text-3xl md:text-4xl font-bold text-emerald-900">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-900">
                   {stat.value}
                 </div>
                 <div className="text-sm text-slate-500 uppercase tracking-wide">
